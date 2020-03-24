@@ -2,6 +2,40 @@
   <div class="root">
     <div class="top-bar">
       <div class="title">系统管理后台</div>
+      <div class="right-menu">
+        <el-dropdown class="theme-container">
+          <span class="el-dropdown-link">
+            主题色变更
+            <i class="el-icon-arrow-down el-icon--right"></i>
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item>红色主题</el-dropdown-item>
+            <el-dropdown-item>蓝色主题</el-dropdown-item>
+            <el-dropdown-item>绿色主题</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+
+        <el-dropdown class="avatar-container" trigger="click">
+          <div class="avatar-wrapper">
+            <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar" />
+            <i class="el-icon-caret-bottom" />
+          </div>
+          <el-dropdown-menu slot="dropdown" class="user-dropdown">
+            <router-link to="/">
+              <el-dropdown-item>Home</el-dropdown-item>
+            </router-link>
+            <a target="_blank" href="https://github.com/a307420929/Vue-management-system">
+              <el-dropdown-item>Github</el-dropdown-item>
+            </a>
+            <a target="_blank" href="https://www.jianshu.com/p/da271034d409">
+              <el-dropdown-item>Docs</el-dropdown-item>
+            </a>
+            <el-dropdown-item divided @click.native="logout">
+              <span style="display:block;">Log Out</span>
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </div>
     </div>
     <div :class="classObj" class="app-wrapper">
       <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
@@ -17,6 +51,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import { Navbar, Sidebar, AppMain } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
 
@@ -29,6 +64,7 @@ export default {
   },
   mixins: [ResizeMixin],
   computed: {
+    ...mapGetters(['avatar']),
     sidebar() {
       return this.$store.state.app.sidebar
     },
@@ -76,7 +112,72 @@ export default {
       color: #fff;
       margin-left: 40px;
       font-size: 25px;
-      border-right: 2px solid #fff;
+      border-right: px solid #fff;
+    }
+    .right-menu {
+      position: absolute;
+      right: 0px;
+      top: 0;
+      height: 100%;
+      line-height: 55px;
+
+      &:focus {
+        outline: none;
+      }
+
+      .right-menu-item {
+        display: inline-block;
+        padding: 0 8px;
+        height: 100%;
+        font-size: 18px;
+        color: #5a5e66;
+        vertical-align: text-bottom;
+
+        &.hover-effect {
+          cursor: pointer;
+          transition: background 0.3s;
+
+          &:hover {
+            background: rgba(0, 0, 0, 0.025);
+          }
+        }
+      }
+      .theme-container {
+        position: absolute;
+        top: 0;
+        right: 60px;
+        width: 120px;
+        color: #000;
+        .el-dropdown-link {
+          cursor: pointer;
+        }
+        .el-icon-arrow-down {
+          font-size: 12px;
+        }
+      }
+      .avatar-container {
+        margin-right: 30px;
+
+        .avatar-wrapper {
+          margin-top: 5px;
+          position: relative;
+
+          .user-avatar {
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+          }
+
+          .el-icon-caret-bottom {
+            cursor: pointer;
+            position: absolute;
+            right: -20px;
+            top: 25px;
+            font-size: 12px;
+          }
+        }
+      }
     }
   }
   .app-wrapper {

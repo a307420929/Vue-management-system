@@ -58,8 +58,8 @@ export const constantRoutes = [{
         }
       },
       {
-        path: 'menu2-2',
-        name: 'menu2-2',
+        path: 'menu2-3',
+        name: 'menu2-3',
         component: () => import('@/views/menu2-2/index'),
         meta: {
           title: '评论列表',
