@@ -7,8 +7,6 @@
     />
 
     <breadcrumb class="breadcrumb-container" />
-
-    
   </div>
 </template>
 
@@ -25,6 +23,7 @@ export default {
   computed: {
     ...mapGetters(['sidebar', 'avatar'])
   },
+
   methods: {
     toggleSideBar() {
       this.$store.dispatch('app/toggleSideBar')
@@ -61,7 +60,5 @@ export default {
   .breadcrumb-container {
     float: left;
   }
-
-  
 }
 </style>

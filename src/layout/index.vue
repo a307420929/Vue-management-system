@@ -3,15 +3,17 @@
     <div class="top-bar">
       <div class="title">系统管理后台</div>
       <div class="right-menu">
-        <el-dropdown class="theme-container">
+        <el-dropdown class="theme-container" @command="handleTheme" trigger="click">
           <span class="el-dropdown-link">
-            主题色变更
+            当前主题色：{{curTheme}}
             <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>红色主题</el-dropdown-item>
-            <el-dropdown-item>蓝色主题</el-dropdown-item>
-            <el-dropdown-item>绿色主题</el-dropdown-item>
+            <el-dropdown-item
+              v-for="item in themeList"
+              :key="item.value"
+              :command="{value:item.value,label:item.label}"
+            >{{item.label}}</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
 
@@ -83,9 +85,23 @@ export default {
       }
     }
   },
+  data() {
+    return {
+      curTheme: '红色主题',
+      themeList: [
+        { value: 'red', label: '红色主题' },
+        { value: 'blue', label: '蓝色主题' },
+        { value: 'green', label: '绿色主题' }
+      ]
+    }
+  },
   methods: {
     handleClickOutside() {
       this.$store.dispatch('app/closeSideBar', { withoutAnimation: false })
+    },
+    handleTheme(command) {
+      this.curTheme = command.label
+      window.document.documentElement.setAttribute('data-theme', command.value)
     }
   }
 }
@@ -146,7 +162,7 @@ export default {
         position: absolute;
         top: 0;
         right: 60px;
-        width: 120px;
+        width: 200px;
         color: #000;
         .el-dropdown-link {
           cursor: pointer;
