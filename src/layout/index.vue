@@ -50,12 +50,12 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import { Navbar, Sidebar, AppMain } from './components'
-import ResizeMixin from './mixin/ResizeHandler'
+import { mapGetters } from "vuex";
+import { Navbar, Sidebar, AppMain } from "./components";
+import ResizeMixin from "./mixin/ResizeHandler";
 
 export default {
-  name: 'Layout',
+  name: "Layout",
   components: {
     Navbar,
     Sidebar,
@@ -63,50 +63,54 @@ export default {
   },
   mixins: [ResizeMixin],
   computed: {
-    ...mapGetters(['avatar']),
+    ...mapGetters(["avatar"]),
     sidebar() {
-      return this.$store.state.app.sidebar
+      return this.$store.state.app.sidebar;
     },
     device() {
-      return this.$store.state.app.device
+      return this.$store.state.app.device;
     },
     fixedHeader() {
-      return this.$store.state.settings.fixedHeader
+      return this.$store.state.settings.fixedHeader;
     },
     classObj() {
       return {
         hideSidebar: !this.sidebar.opened,
         openSidebar: this.sidebar.opened,
         withoutAnimation: this.sidebar.withoutAnimation,
-        mobile: this.device === 'mobile'
-      }
+        mobile: this.device === "mobile"
+      };
     }
   },
   data() {
     return {
-      curTheme: '红色主题',
+      curTheme: "红色主题",
       themeList: [
-        { value: 'red', label: '红色主题' },
-        { value: 'blue', label: '蓝色主题' },
-        { value: 'green', label: '绿色主题' }
+        { value: "red", label: "红色主题" },
+        { value: "blue", label: "蓝色主题" },
+        { value: "green", label: "绿色主题" }
       ]
-    }
+    };
   },
   methods: {
     handleClickOutside() {
-      this.$store.dispatch('app/closeSideBar', { withoutAnimation: false })
+      this.$store.dispatch("app/closeSideBar", { withoutAnimation: false });
     },
     handleTheme(command) {
-      this.curTheme = command.label
+      this.curTheme = command.label;
       //   window.document.documentElement.setAttribute("data-theme",command)
+    },
+    logout() {
+      // this.$store.dispatch("user/logout");
+      this.$router.push(`/login?redirect=${this.$route.fullPath}`);
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-@import '~@/styles/mixin.scss';
-@import '~@/styles/variables.scss';
+@import "~@/styles/mixin.scss";
+@import "~@/styles/variables.scss";
 .root {
   position: relative;
   height: 100%;

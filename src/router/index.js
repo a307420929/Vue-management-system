@@ -84,25 +84,26 @@ export const constantRoutes = [{
   {
     path: '/menu4',
     component: Layout,
-    children: [{
-        path: 'menu4',
-        name: 'menu4',
-        component: () => import('@/views/menu4/index'),
-        meta: {
-          title: '音频管理',
-          icon: ''
-        }
-      },
-      {
-        path: 'menu4/add',
-        name: 'menu4-add',
-        component: () => import('@/views/menu4/add.vue'),
-        meta: {
-          title: '新增语音',
-          icon: ''
-        },
-        hidden: true
-      }
+    children: [
+      // {
+      //   path: 'menu4',
+      //   name: 'menu4',
+      //   component: () => import('@/views/menu4/index'),
+      //   meta: {
+      //     title: '音频管理',
+      //     icon: ''
+      //   }
+      // },
+      // {
+      //   path: 'menu4/add',
+      //   name: 'menu4-add',
+      //   component: () => import('@/views/menu4/add.vue'),
+      //   meta: {
+      //     title: '新增语音',
+      //     icon: ''
+      //   },
+      //   hidden: true
+      // }
     ]
   },
   // 404 page must be placed at the end !!!
