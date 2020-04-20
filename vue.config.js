@@ -25,22 +25,16 @@ module.exports = {
         port: 8077,
         https: false,
         hotOnly: false,
-        before: require('./mock/mock-server.js')
+        // before: require('./mock/mock-server.js')
         /* 使用代理 */
-        // proxy: { //配置自动启动浏览器
-        //     "/XX/*": {
-        //         target: "http://172.11.11.11:7071",
-        //         changeOrigin: true,
-        //         // ws: true,//websocket支持
-        //         secure: false
-        //     },
-        //     "/XX2/*": {
-        //         target: "http://172.12.12.12:2018",
-        //         changeOrigin: true,
-        //         //ws: true,//websocket支持
-        //         secure: false
-        //     },
-        // }
+        proxy: {
+            "/api": {
+                target: "http://118.190.145.217:8120",
+                changeOrigin: true,
+                // ws: true,//websocket支持
+                secure: false
+            },
+        }
 
     },
     // webpack 配置，键值对象时会合并配置，为方法时会改写配置

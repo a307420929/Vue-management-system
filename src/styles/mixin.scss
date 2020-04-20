@@ -26,20 +26,3 @@
   width: 100%;
   height: 100%;
 }
-
-@mixin theme_color($color) {
-  // 通过此函数修改主题色
-  background-color: $color;
-
-  [data-theme="red"] & {
-    background-color: $background-theme-red;
-  }
-
-  [data-theme="blue"] & {
-    background-color: $background-theme-blue;
-  }
-
-  [data-theme="green"] & {
-    background-color: $background-theme-green;
-  }
-}

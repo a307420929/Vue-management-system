@@ -30,56 +30,80 @@ export const constantRoutes = [{
       }
     }]
   },
+  // {
+  //   path: '/menu2',
+  //   component: Layout,
+  //   redirect: '/menu2/menu2-1',
+  //   name: 'menu2',
+  //   meta: {
+  //     title: '商品管理',
+  //     icon: ''
+  //   },
+  //   children: [{
+  //       path: 'menu2-1',
+  //       name: 'menu2-1',
+  //       component: () => import('@/views/menu2-1/index'),
+  //       meta: {
+  //         title: '商品分类',
+  //         icon: ''
+  //       }
+  //     },
+  //     {
+  //       path: 'menu2-2',
+  //       name: 'menu2-2',
+  //       component: () => import('@/views/menu2-2/index'),
+  //       meta: {
+  //         title: '商品列表',
+  //         icon: ''
+  //       }
+  //     },
+  //     {
+  //       path: 'menu2-3',
+  //       name: 'menu2-3',
+  //       component: () => import('@/views/menu2-2/index'),
+  //       meta: {
+  //         title: '评论列表',
+  //         icon: ''
+  //       }
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: '/menu3',
+  //   component: Layout,
+  //   children: [{
+  //     path: 'menu3',
+  //     name: 'menu3',
+  //     component: () => import('@/views/menu3/index'),
+  //     meta: {
+  //       title: '广告管理',
+  //       icon: ''
+  //     }
+  //   }]
+  // },
   {
-    path: '/menu2',
+    path: '/menu4',
     component: Layout,
-    redirect: '/menu2/menu2-1',
-    name: 'menu2',
-    meta: {
-      title: '商品管理',
-      icon: ''
-    },
     children: [{
-        path: 'menu2-1',
-        name: 'menu2-1',
-        component: () => import('@/views/menu2-1/index'),
+        path: 'menu4',
+        name: 'menu4',
+        component: () => import('@/views/menu4/index'),
         meta: {
-          title: '商品分类',
+          title: '音频管理',
           icon: ''
         }
       },
       {
-        path: 'menu2-2',
-        name: 'menu2-2',
-        component: () => import('@/views/menu2-2/index'),
+        path: 'menu4/add',
+        name: 'menu4-add',
+        component: () => import('@/views/menu4/add.vue'),
         meta: {
-          title: '商品列表',
+          title: '新增语音',
           icon: ''
-        }
-      },
-      {
-        path: 'menu2-3',
-        name: 'menu2-3',
-        component: () => import('@/views/menu2-2/index'),
-        meta: {
-          title: '评论列表',
-          icon: ''
-        }
+        },
+        hidden: true
       }
     ]
-  },
-  {
-    path: '/menu3',
-    component: Layout,
-    children: [{
-      path: 'menu3',
-      name: 'menu3',
-      component: () => import('@/views/menu3/index'),
-      meta: {
-        title: '广告管理',
-        icon: ''
-      }
-    }]
   },
   // 404 page must be placed at the end !!!
   {

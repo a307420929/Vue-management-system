@@ -3,7 +3,7 @@
     <div class="top-bar">
       <div class="title">系统管理后台</div>
       <div class="right-menu">
-        <el-dropdown class="theme-container" @command="handleTheme" trigger="click">
+        <!-- <el-dropdown class="theme-container" @command="handleTheme" trigger="click">
           <span class="el-dropdown-link">
             当前主题色：{{curTheme}}
             <i class="el-icon-arrow-down el-icon--right"></i>
@@ -15,13 +15,10 @@
               :command="{value:item.value,label:item.label}"
             >{{item.label}}</el-dropdown-item>
           </el-dropdown-menu>
-        </el-dropdown>
+        </el-dropdown>-->
 
         <el-dropdown class="avatar-container" trigger="click">
-          <div class="avatar-wrapper">
-            <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar" />
-            <i class="el-icon-caret-bottom" />
-          </div>
+          <span>个人中心 ▼</span>
           <el-dropdown-menu slot="dropdown" class="user-dropdown">
             <router-link to="/">
               <el-dropdown-item>Home</el-dropdown-item>
@@ -101,7 +98,7 @@ export default {
     },
     handleTheme(command) {
       this.curTheme = command.label
-      window.document.documentElement.setAttribute('data-theme', command.value)
+      //   window.document.documentElement.setAttribute("data-theme",command)
     }
   }
 }
@@ -118,7 +115,7 @@ export default {
     top: 0;
     height: 55px;
     width: 100%;
-    background: #ed6e00;
+    background: #093488;
     .title {
       display: inline-block;
       width: 170px;
@@ -173,7 +170,9 @@ export default {
       }
       .avatar-container {
         margin-right: 30px;
-
+        span {
+          color: #fff;
+        }
         .avatar-wrapper {
           margin-top: 5px;
           position: relative;

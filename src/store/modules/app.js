@@ -6,7 +6,7 @@ const state = {
     withoutAnimation: false
   },
   device: 'desktop',
-  baseColor:'#ED6E00'
+  baseColor:'#093488'
 }
 
 const mutations = {
